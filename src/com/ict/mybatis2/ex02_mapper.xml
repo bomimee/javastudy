@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="members">
+
+	<!-- 셀렉문 결과타입에서 여러줄이 나와도 List<VO> 아니다. 그냥 VO 타입이다. <select id="selectBlog" 
+		resultType="Blog"> select * from Blog where id = #{id} </select> 파라미터 한개일때는 
+		VO 또는 String, int 등 사용가능 파라미터가 두 개~ 여러개 인 경우 반드시 VO 사용 <insert id="" parameterType=""></insert> 
+		<update id="" parameterType=""></update> <delete id="" parameterType=""></delete> -->
+	<select id="selectAll" resultType="com.ict.mybatis2.Ex02_VO">
+		select * from members
+	</select>
+	<select id="selectOne" resultType="com.ict.mybatis2.Ex02_VO"
+		parameterType="String">
+		select * from members where idk = #{idk}
+	</select>
+	<select id="login" resultType="com.ict.mybatis2.Ex02_VO"
+		parameterType="com.ict.mybatis2.Ex02_VO">
+		select * from members where id = #{id}
+	</select>
+	<insert id="getInsert" parameterType="com.ict.mybatis2.Ex02_VO">
+		insert into members(idk, id, pw, name, age, regdate) values(#{idk},#{id},
+		#{pw}, #{name}, #{age}, #{regdate})
+	</insert>
+	<delete id="getDelete" parameterType="com.ict.mybatis2.Ex02_VO">
+		delete from members where idk = #{idk}
+	</delete>
+	<update id="getUpdate" parameterType="com.ict.mybatis2.Ex02_VO">
+		update members set id=#{id},
+		pw = #{pw}, name=#{name}, age = #{age}, regdate = #{regdate} where
+		idk=#{idk}
+	</update>
+</mapper>

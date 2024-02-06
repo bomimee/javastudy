@@ -1,0 +1,27 @@
+1.VO 를 먼저 만들자
+원하는 테이블과 컬럼명이 일치
+프로젝트에서 마우스 오른쪽 빌드패스 -- 컨피그 빌드 패스 선택 
+프로젝트선택후 윈도우즈  프리퍼런스 - moven - 4번째 체크박스 선택 
+일부를 빼도 상관없고 다른 테이블의 컬럼명을 넣어도 상관없다
+config.xml 만들기 (참고, xml 이란 확장 마크업 언어, 사용자가 태그를 만들어서 사용할 수 있다.)
+다운받은 pdf를 보면 만드는 법이 나온다. p3
+xml file 첫줄 <?xml version="1.0" encoding="utf-8"?>
+encoding 이란 문자를 바이트 코드로 변환하는 것
+utf-8 전세계 언어표현가능 
+=> 오라클 접속 정보 입력
+=> 매퍼 위치  지정
+mapper.xml 을 만들자
+다운받은 pdf p.4 
+mapper namespace="customer" 는 mapper 가 여러개일때 구분하기 위함
+자바에서 매퍼에 접근할때 namespace가 지정한 매퍼이름.아이디 로 접근
+-mapper 는 쿼리를 사용하여 디비에 보내고 결과를 받아서 매퍼를 호출하는 곳으로 결과가 되돌아간다
+태그 자체에 삽입, 삭제, 수정 등의 태그가있다
+<mapper namespace="테이블이름">
+ <select id="외부에서 호출할때 사용할 아이디" resultType="결과타입 VO or int" parameterType = "외부에서 들어오는 정보타입">
+ 
+ DBService.java 만들기 ;to read config file, and to help to use Mybatis in java (pdf p.2)
+ 자바에서 SqlSession 사용 => SqlSessionFactory 필요
+ SqlSessionFactory 를 리턴해주는 클래스 
+ 
+ DAO.java
+ DB 처리하는 클래스 ; DBService.getFactory() 로 sqlSessionFactory 를 호출하고 그걸 이용해서 자바에서 사용할 수 있는 sqlSession

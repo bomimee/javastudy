@@ -1,0 +1,32 @@
+package ict.com.day14;
+
+public class Ex04 {
+	String name = "홍길동";
+	private int age = 24;
+	static int cnt = 14;
+
+	public void play() {
+		int money = 10000;
+		System.out.println("외부메서드: " + money);
+	}
+	public static void like() {
+		System.out.println("like");
+	}
+
+	// static 내부클래스
+	public static class Inner03 {
+		String addr = "서울 마포구";
+		static int room = 5;
+
+		public static void prn() {
+			// static 클래스 외부클래스의 인스턴스 사용불가
+			// System.out.println(name);
+			// System.out.println(age);
+			//System.out.println(addr);
+			System.out.println(room);
+			System.out.println(cnt);
+			// play();
+			like();
+		}
+	}
+}
